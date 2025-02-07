@@ -13,7 +13,7 @@ while (($script:passwordLength -match '[^0-9]')) {
 }
 $script:passwordLength = [int]$script:passwordLength
 switch ($script:passwordLength) {
-  { $_ -lt 16 } { Write-Host "Password length must be a minimum of 20 characters, setting password length to 20"; $script:passwordLength = 20 }
+  { $_ -lt 20 } { Write-Host "Password length must be a minimum of 20 characters, setting password length to 20"; $script:passwordLength = 20 }
   { $_ -gt 128 } { Write-Host "Password length cannot exceed 128 characters to protect system resources, limitting length to 128"; $script:passwordLength = 128 }
 }
 [string[]]$script:charArray = @()
