@@ -37,11 +37,11 @@ function Get-ComplexPassword {
   do {
     $generatedPassword = -join ($charArray | Get-SecureRandom -Count $passwordLength)
     $iteration++
-  } while (
-    ($generatedPassword -notmatch '[a-z]{3,}') -or 
-    ($generatedPassword -notmatch '[A-Z]{3,}') -or 
-    ($generatedPassword -notmatch '[0-9]{3,}') -or 
-    ($generatedPassword -notmatch '[-!@#$%^&*()_=+\[\]{}:;<>,\.?/~`|]{3,}')
+  } until (
+    ($generatedPassword -match '[a-z]{3,}') -and
+    ($generatedPassword -match '[A-Z]{3,}') -and 
+    ($generatedPassword -match '[0-9]{3,}') -and
+    ($generatedPassword -match '[-!@#$%^&*()_=+\[\]{}:;<>,\.?/~`|]{3,}')
   )
   Write-Host "Generation attempts to achieve mandated complexity: $iteration" -ForegroundColor Magenta -BackgroundColor Black
   Write-Host "Password: " -ForegroundColor DarkGreen -BackgroundColor Black -NoNewline
