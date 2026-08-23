@@ -58,4 +58,4 @@ function Get-ComplexPassword {
     Write-Host "Password: " -ForegroundColor DarkGreen -BackgroundColor Black -NoNewline
     Write-Host "$generatedPassword"
 }
-Get-ComplexPassword -passwordLength $script:passwordLength $complexity
+Get-ComplexPassword -passwordLength $script:passwordLength -complexity $complexity
